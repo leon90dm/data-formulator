@@ -19,9 +19,9 @@ How to set up your local machine.
     pip install -r requirements.txt
     ```
 - **Configure environment variable (optional)s**
-    - copy `api-keys.env.example` to `api-keys.env` and add your API keys.
+    - copy `api-keys.env.template` to `api-keys.env` and add your API keys.
         - required fields for different providers are different, please refer to the [LiteLLM setup](https://docs.litellm.ai/docs#litellm-python-sdk) guide for more details.
-            - currently only endpoint, model, api_key, api_base, api_version are supported.
+            - currently only endpoint, model, api_key, api_base, api_version are supported. (The `api_base` is particularly useful for connecting to custom OpenAI-compatible services or local LLMs that expose an OpenAI-like interface).
         - this helps data formulator to automatically load the API keys when you run the app, so you don't need to set the API keys in the app UI.
 
     - set `.env` to configure server properties:

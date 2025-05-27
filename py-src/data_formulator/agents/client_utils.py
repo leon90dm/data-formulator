@@ -38,6 +38,11 @@ class Client(object):
                 self.model = model
             else:
                 self.model = f"anthropic/{model}"
+        elif self.endpoint == "openai":
+            if model.startswith("openai/"):
+                self.model = model
+            else:
+                self.model = f"openai/{model}"
         elif self.endpoint == "azure":
             self.params["api_base"] = api_base
             self.params["api_version"] = api_version if api_version else "2024-02-15-preview"
@@ -63,27 +68,9 @@ class Client(object):
         """
         # Configure LiteLLM 
 
-        if self.endpoint == "openai":
-            client = openai.OpenAI(
-                base_url=self.params.get("api_base", None),
-                api_key=self.params.get("api_key", ""),
-                timeout=120
-            )
-
-            completion_params = {
-                "model": self.model,
-                "messages": messages,
-            }
-            
-            if not (self.model == "o3-mini" or self.model == "o1"):
-                completion_params["temperature"] = self.params["temperature"]
-                completion_params["max_tokens"] = self.params["max_completion_tokens"]
-                
-            return client.chat.completions.create(**completion_params)
-        else:
-            return litellm.completion(
-                model=self.model,
-                messages=messages,
-                drop_params=True,
-                **self.params
-            )
+        return litellm.completion(
+            model=self.model,
+            messages=messages,
+            drop_params=True,
+            **self.params
+        )

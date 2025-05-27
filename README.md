@@ -53,6 +53,7 @@ Transform data and create rich visualizations iteratively with AI 🪄. Try Data
 
 - [02-12-2025] More models supported now!
   - Now supports OpenAI, Azure, Ollama, and Anthropic models (and more powered by [LiteLLM](https://github.com/BerriAI/litellm));
+  - For OpenAI-compatible APIs not explicitly listed, you can use the 'openai' provider option. Simply configure the custom `API_BASE` URL and your specific model names in the `api-keys.env` file (as described in `api-keys.env.template`) or add them directly in the Model Selection dialog in the UI.
   - Models with strong code generation and instruction following capabilities are recommended (gpt-4o, claude-3-5-sonnet etc.);
   - You can store API keys in `api-keys.env` to avoid typing them every time (see template `api-keys.env.template`).
   - Let us know which models you have good/bad experiences with, and what models you would like to see supported! [[comment here]](https://github.com/microsoft/data-formulator/issues/49)
